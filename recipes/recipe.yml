@@ -6,8 +6,8 @@ name: maxim-os
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 41 # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/cosmic-atomic-main
+image-version: 42 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -20,9 +20,13 @@ modules:
   - type: rpm-ostree
     repos:
       - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+      - https://openrazer.github.io/hardware:razer.repo
     install:
-      - micro
       - starship
+      - fish
+      - kitty
+      - bat
+      - polychromatic
     remove:
       # example: removing firefox (in favor of the flatpak)
       # "firefox" is the main package, "firefox-langpacks" is a dependency
@@ -34,11 +38,34 @@ modules:
     system:
       # If no repo information is specified, Flathub will be used by default
       install:
-        - org.mozilla.firefox
-        - org.gnome.Loupe
+        - io.gitlab.librewolf-community
+        - app.zen_browser.zen
+        - com.discordapp.Discord
+        - com.heroicgameslauncher.hgl
+        - net.lutris.Lutris
       remove:
+        - org.mozilla.firefox
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
+  - type: akmods
+    base: main # if not specified, classic "main" base is used by default
+    install:
+      - openrazer
 
+stages:
+  - name: bluebuild
+    from: docker.io/library/rust:1.86
+    modules: # same as the top-level modules key, but executed in the custom stage
+      - type: script
+        no-cache: true
+        snippets:
+          - cargo install --locked --all-features blue-build
+  - name: eza
+    from: docker.io/library/rust:1.86
+    modules:
+      - type: script
+        no-cache: true
+        snippets:
+          - cargo install eza
