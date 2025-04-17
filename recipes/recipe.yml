@@ -69,3 +69,10 @@ stages:
         no-cache: true
         snippets:
           - cargo install eza
+  - name: starship-jj
+    from: docker.io/library/rust:1.86
+    modules:
+      - type: script
+        no-cache: true
+        snippets:
+          - cargo install starship-jj --locked
