@@ -27,11 +27,16 @@ modules:
       - kitty
       - bat
       - polychromatic
+      - mesa-va-drivers-freeworld
+      - mesa-vdpau-drivers-freeworld
+      - gum
     remove:
       # example: removing firefox (in favor of the flatpak)
       # "firefox" is the main package, "firefox-langpacks" is a dependency
       - firefox
       - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      - mesa-va-drivers
+      - mesa-vdpau-drivers
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
@@ -62,17 +67,3 @@ stages:
         no-cache: true
         snippets:
           - cargo install --locked --all-features blue-build
-  - name: eza
-    from: docker.io/library/rust:1.86
-    modules:
-      - type: script
-        no-cache: true
-        snippets:
-          - cargo install eza
-  - name: starship-jj
-    from: docker.io/library/rust:1.86
-    modules:
-      - type: script
-        no-cache: true
-        snippets:
-          - cargo install starship-jj --locked
