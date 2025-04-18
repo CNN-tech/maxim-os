@@ -11,7 +11,7 @@ image-version: 42 # latest is also supported if you want new updates ASAP
 
 stages:
   - name: helix
-    from: docker.io/library/rust
+    from: docker.io/library/rust:1.86
     modules:
       - type: script
         snippets:
