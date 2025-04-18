@@ -39,6 +39,7 @@ modules:
       - webapp-manager
       - fastfetch
       - fastfetch-fish-completion
+      - bat
       - fish
       - kitty
       - calibre
