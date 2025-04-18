@@ -78,6 +78,7 @@ modules:
         - app.polychromatic.controller
         - com.valvesoftware.Steam
         - com.github.tchx84.Flatseal
+        - dev.edfloreshz.CosmicTweaks
       remove:
         - org.mozilla.firefox
         - org.gnome.eog
