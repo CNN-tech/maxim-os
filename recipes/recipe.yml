@@ -22,6 +22,7 @@ modules:
       - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
       - https://openrazer.github.io/hardware:razer.repo
     install:
+      - syncthing
       - starship
       - fish
       - kitty
@@ -30,6 +31,10 @@ modules:
       - mesa-va-drivers-freeworld
       - mesa-vdpau-drivers-freeworld
       - gum
+      - steam
+      - zathura
+      - zathura-fish-completion
+      - zathura-plugins-all
     remove:
       # example: removing firefox (in favor of the flatpak)
       # "firefox" is the main package, "firefox-langpacks" is a dependency
@@ -48,16 +53,46 @@ modules:
         - com.discordapp.Discord
         - com.heroicgameslauncher.hgl
         - net.lutris.Lutris
+        - com.vysp3r.ProtonPlus
+        - org.keepassxc.KeePassXC
+        - md.obsidian.Obsidian
       remove:
         - org.mozilla.firefox
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
-
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
   - type: akmods
     base: main # if not specified, classic "main" base is used by default
     install:
       - openrazer
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+
+  - type: systemd
+    system:
+      enabled:
+        - syncthing@maxim.service
+
+  - type: brew
+    nofile-limits: true # increase nofile limits
+    brew-analytics: false # disable telemetry
+
+  - type: bling
+    install:
+      - rpmfusion # install RPMFusion repos, including tainted repos & disable negativo17 repos if installed
+      - ublue-update # https://github.com/ublue-os/ublue-update
+
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode # don't add spaces or "Nerd Font" suffix.
+        - NerdFontsSymbolsOnly
+      google-fonts:
+        - Roboto
+        - Inter
+        - Victor Mono
+  - type: script
+    snippets:
+      - "sudo plymouth-set-default-theme -R catppuccin-mocha" # example: download binary
+  - type: initramfs
 
 stages:
   - name: bluebuild
