@@ -9,6 +9,17 @@ description: This is my personal OS image.
 base-image: ghcr.io/ublue-os/cosmic-atomic-main
 image-version: 42 # latest is also supported if you want new updates ASAP
 
+stages:
+  - name: helix
+    from: docker.io/library/rust
+    modules:
+      - type: script
+        snippets:
+          - apt-get update && apt-get install -y git # Install git
+          - git clone https://github.com/helix-editor/helix.git # Clone the helix repo
+          - cd helix && cargo install --path helix-term # Use cargo to install
+          - mkdir -p /out/ && mv $CARGO_HOME/bin/hx /out/hx && mv runtime /out/ # Move bin and runtime
+
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
@@ -95,16 +106,18 @@ modules:
         - Roboto
         - Inter
         - Victor Mono
+
+  - type: copy
+    from: helix
+    src: /out/hx
+    dest: /usr/bin/
+  - type: copy
+    from: helix
+    src: /out/runtime
+    dest: /usr/share/helix/
+
   - type: script
     snippets:
       - "sudo plymouth-set-default-theme catppuccin-mocha" # example: download binary
-  - type: initramfs
 
-stages:
-  - name: bluebuild
-    from: docker.io/library/rust:1.86
-    modules: # same as the top-level modules key, but executed in the custom stage
-      - type: script
-        no-cache: true
-        snippets:
-          - cargo install --locked --all-features blue-build
+  - type: initramfs
