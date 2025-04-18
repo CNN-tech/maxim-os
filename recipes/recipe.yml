@@ -18,15 +18,13 @@ modules:
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: rpm-ostree
-    repos:
-      - https://openrazer.github.io/hardware:razer.repo
+    # repos:
     install:
       - syncthing
       - fastfetch
       - fastfetch-fish-completion
       - fish
       - kitty
-      - polychromatic
       - calibre
       - mesa-va-drivers-freeworld
       - mesa-vdpau-drivers-freeworld
@@ -57,6 +55,7 @@ modules:
         - com.vysp3r.ProtonPlus
         - org.keepassxc.KeePassXC
         - md.obsidian.Obsidian
+        - app.polychromatic.controller
       remove:
         - org.mozilla.firefox
         - org.gnome.eog
