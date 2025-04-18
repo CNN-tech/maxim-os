@@ -31,8 +31,12 @@ modules:
       - fish
       - kitty
       - calibre
-      # - mesa-va-drivers-freeworld.x86_64
-      # - mesa-vdpau-drivers-freeworld.x86_64
+      - steam-devices # use if steam-flatpak
+      # - steam
+      # - mesa-va-drivers-freeworld
+      # - mesa-vdpau-drivers-freeworld
+      - gamescope
+      - gamemode
       - gum
       - zathura
       - zathura-fish-completion
@@ -45,6 +49,7 @@ modules:
       - firefox
       - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
       # - mesa-va-drivers
+      # - mesa-vdpau-drivers
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
