@@ -17,6 +17,9 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  - type: bling
+    install:
+        - rpmfusion # install RPMFusion repos, including tainted repos & disable negativo17 repos if installed
   - type: rpm-ostree
     # repos:
     install:
@@ -26,21 +29,20 @@ modules:
       - fish
       - kitty
       - calibre
-      - mesa-va-drivers-freeworld
-      - mesa-vdpau-drivers-freeworld
+      # - mesa-va-drivers-freeworld.x86_64
+      # - mesa-vdpau-drivers-freeworld.x86_64
       - gum
-      - steam
       - zathura
       - zathura-fish-completion
       - zathura-plugins-all
       - wqy-zenhei-fonts
+      - ffmpeg
     remove:
       # example: removing firefox (in favor of the flatpak)
       # "firefox" is the main package, "firefox-langpacks" is a dependency
       - firefox
       - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-      - mesa-va-drivers
-      # - mesa-vdpau-drivers
+      # - mesa-va-drivers
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
@@ -56,6 +58,7 @@ modules:
         - org.keepassxc.KeePassXC
         - md.obsidian.Obsidian
         - app.polychromatic.controller
+        - com.valvesoftware.Steam
       remove:
         - org.mozilla.firefox
         - org.gnome.eog
@@ -71,14 +74,9 @@ modules:
       enabled:
         - syncthing@maxim.service
 
-  - type: brew
-    nofile-limits: true # increase nofile limits
-    brew-analytics: false # disable telemetry
-
-  - type: bling
-    install:
-      - rpmfusion # install RPMFusion repos, including tainted repos & disable negativo17 repos if installed
-      - ublue-update # https://github.com/ublue-os/ublue-update
+  # - type: brew
+  #   nofile-limits: true # increase nofile limits
+  #   brew-analytics: false # disable telemetry
 
   - type: fonts
     fonts:
@@ -91,7 +89,7 @@ modules:
         - Victor Mono
   - type: script
     snippets:
-      - "sudo plymouth-set-default-theme -R catppuccin-mocha" # example: download binary
+      - "sudo plymouth-set-default-theme catppuccin-mocha" # example: download binary
   - type: initramfs
 
 stages:
