@@ -17,8 +17,8 @@ stages:
         snippets:
           - apt-get update && apt-get install -y git # Install git
           - git clone https://github.com/helix-editor/helix.git # Clone the helix repo
-          - cd helix && cargo update && cargo install --path helix-term # Use cargo to install
-          - mkdir -p /out/ && mv $CARGO_HOME/bin/hx /out/hx && mv runtime /out/ # Move bin and runtime
+          - cd helix && rustup update stable && cargo +stable install --path helix-term # Use cargo to install
+          - mkdir -p /out/ && mv $CARGO_HOME/bin/hx /out/hx && mv helix/runtime /out/ # Move bin and runtime
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
