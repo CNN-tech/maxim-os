@@ -41,6 +41,7 @@ modules:
       - vivaldi-stable
       - chromium
       - starship
+      - https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest/download/opentabletdriver-0.6.5.1-1.x86_64.rpm
       - fzf
       - webapp-manager
       - fastfetch
@@ -95,6 +96,8 @@ modules:
   #   base: main # if not specified, classic "main" base is used by default
   #   install:
   #     - openrazer
+  #     - xone
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
   - type: systemd
