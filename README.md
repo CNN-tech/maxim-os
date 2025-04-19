@@ -1,6 +1,6 @@
 # maxim-os &nbsp; [![bluebuild build badge](https://github.com/ammix/maxim-os/actions/workflows/build.yml/badge.svg)](https://github.com/ammix/maxim-os/actions/workflows/build.yml)
 
-My personal distro based on the Cosmic Atomic image. (RPM Fusion mesa-freeworld drivers inlcuded)
+My personal image based on the Cosmic Atomic image.
 
 ## Installation
 
