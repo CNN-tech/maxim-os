@@ -37,6 +37,7 @@ modules:
     install:
       - syncthing
       - chromium
+      - fzf
       - webapp-manager
       - fastfetch
       - fastfetch-fish-completion
