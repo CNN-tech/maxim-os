@@ -20,6 +20,7 @@ modules:
   - type: bling
     install:
         - rpmfusion # install RPMFusion repos, including tainted repos & disable negativo17 repos if installed
+
   - type: rpm-ostree
     repos:
       - https://copr.fedorainfracloud.org/coprs/kylegospo/webapp-manager/repo/fedora-%OS_VERSION%/kylegospo-webapp-manager-%OS_VERSION%.repo
@@ -27,25 +28,24 @@ modules:
       - syncthing
       - stow
       - https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest/download/opentabletdriver-0.6.5.1-1.x86_64.rpm
-      - fzf
       - webapp-manager
       - kitty
-      - calibre
-      - steam-devices # use if steam-flatpak
+      # - calibre
+      - steam-devices # needed for flatpak too
       # - steam
       # - mesa-va-drivers-freeworld
       # - mesa-vdpau-drivers-freeworld
-      - gamescope
+      # - gamescope
       - gamemode
       - gum
       - zathura
       - zathura-fish-completion
       - zathura-plugins-all
       - wqy-zenhei-fonts
-      - ffmpeg
+      # - ffmpeg
     remove:
       - firefox
-      - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      - firefox-langpacks
       # - mesa-va-drivers
       # - mesa-vdpau-drivers
 
@@ -70,6 +70,7 @@ modules:
         - org.mozilla.firefox
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
+
   # - type: akmods
   #   base: main # if not specified, classic "main" base is used by default
   #   install:
@@ -80,10 +81,6 @@ modules:
     system:
       enabled:
         - syncthing@maxim.service
-
-  - type: brew
-    nofile-limits: true # increase nofile limits
-    brew-analytics: false # disable telemetry
 
   - type: fonts
     fonts:
