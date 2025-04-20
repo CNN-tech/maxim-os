@@ -1,0 +1,8 @@
+default_sched = "scx_lavd"
+default_mode = "Auto"
+
+[scheds.scx_lavd]
+auto_mode = ["--performance"]
+gaming_mode = ["--performance"]
+lowlatency_mode = ["--performance"]
+
