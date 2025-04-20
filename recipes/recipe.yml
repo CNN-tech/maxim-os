@@ -32,24 +32,25 @@ modules:
       - https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest/download/opentabletdriver-0.6.5.1-1.x86_64.rpm
       - webapp-manager
       - kitty
-      # - calibre
+      - calibre
       - steam-devices # needed for flatpak too
       # - steam
       # - mesa-va-drivers-freeworld
       # - mesa-vdpau-drivers-freeworld
-      # - gamescope
+      # - mesa-vulkan-drivers-freeworld
       - gamemode
       - gum
       - zathura
       - zathura-fish-completion
       - zathura-plugins-all
       - wqy-zenhei-fonts
-      # - ffmpeg
     remove:
       - firefox
       - firefox-langpacks
+      # - ffmpeg-free
       # - mesa-va-drivers
       # - mesa-vdpau-drivers
+      # - mesa-vulkan-drivers
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
