@@ -19,7 +19,7 @@ modules:
 
   - type: bling
     install:
-        - rpmfusion # install RPMFusion repos, including tainted repos & disable negativo17 repos if installed
+        - negativo17
 
   - type: rpm-ostree
     repos:
@@ -39,9 +39,7 @@ modules:
       - calibre
       - steam-devices # needed for flatpak too
       # - steam
-      # - mesa-va-drivers-freeworld
-      # - mesa-vdpau-drivers-freeworld
-      # - mesa-vulkan-drivers-freeworld
+      - mesa-vdpau-drivers
       - gamemode
       - gum
       - zathura
@@ -51,9 +49,6 @@ modules:
     remove:
       - firefox
       - firefox-langpacks
-      # - mesa-va-drivers
-      # - mesa-vdpau-drivers
-      # - mesa-vulkan-drivers
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
