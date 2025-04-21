@@ -58,12 +58,13 @@ modules:
         - app.zen_browser.zen
         - com.discordapp.Discord
         - com.heroicgameslauncher.hgl
-        - net.lutris.Lutris
+        # - net.lutris.Lutris
+        - com.usebottles.bottles
         - com.vysp3r.ProtonPlus
         - org.keepassxc.KeePassXC
         - md.obsidian.Obsidian
         - app.polychromatic.controller
-        - com.valvesoftware.Steam
+        # - com.valvesoftware.Steam
         - com.github.tchx84.Flatseal
         - org.musicbrainz.Picard
         # - dev.edfloreshz.CosmicTweaks
