@@ -97,12 +97,8 @@ modules:
 
   - type: script
     snippets:
-    # Download and execute the official Calibre installer
-    - wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin install_dir=/opt isolated=y
-
-  - type: script
-    snippets:
       - "plymouth-set-default-theme catppuccin-mocha"
+      - "powerprofilesctl set performance"
 
   - type: initramfs
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
