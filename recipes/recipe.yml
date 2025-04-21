@@ -37,7 +37,7 @@ modules:
       - webapp-manager
       - kitty
       - steam-devices # needed for flatpak too
-      # - steam
+      - steam
       - mesa-vdpau-drivers
       - gamemode
       - gum
