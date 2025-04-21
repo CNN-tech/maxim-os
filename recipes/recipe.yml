@@ -74,11 +74,11 @@ modules:
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
 
-  - type: akmods
-    base: main # if not specified, classic "main" base is used by default
-    install:
-      - openrazer
-      - xone
+  # - type: akmods
+  #   base: main # if not specified, classic "main" base is used by default
+  #   install:
+  #     - openrazer
+  #     - xone
 
   - type: systemd
     system:
