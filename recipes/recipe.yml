@@ -37,7 +37,7 @@ modules:
       - webapp-manager
       - kitty
       - steam-devices # needed for flatpak too
-      - steam
+      # - steam
       - mesa-vdpau-drivers
       - gamemode
       - gum
@@ -64,7 +64,7 @@ modules:
         - org.keepassxc.KeePassXC
         - md.obsidian.Obsidian
         - app.polychromatic.controller
-        # - com.valvesoftware.Steam
+        - com.valvesoftware.Steam
         - com.github.tchx84.Flatseal
         - org.musicbrainz.Picard
         # - dev.edfloreshz.CosmicTweaks
