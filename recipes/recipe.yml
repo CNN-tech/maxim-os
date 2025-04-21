@@ -24,10 +24,10 @@ modules:
   - type: rpm-ostree
     repos:
       - https://copr.fedorainfracloud.org/coprs/kylegospo/webapp-manager/repo/fedora-%OS_VERSION%/kylegospo-webapp-manager-%OS_VERSION%.repo
-      - https://copr.fedorainfracloud.org/coprs/bieszczaders/kernel-cachyos-addons/repo/fedora-%OS_VERSION%/bieszczaders-kernel-cachyos-addons-fedora-%OS_VERSION%.repo
       - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
     install:
-      - scx-scheds # cachyos copr
+      - scx_rusty
+      - scx_rustland
       - syncthing
       - starship
       - stow
@@ -36,7 +36,6 @@ modules:
       # - https://github.com/OpenTabletDriver/OpenTabletDriver/releases/latest/download/opentabletdriver-0.6.5.1-1.x86_64.rpm
       - webapp-manager
       - kitty
-      - calibre
       - steam-devices # needed for flatpak too
       # - steam
       - mesa-vdpau-drivers
@@ -66,6 +65,7 @@ modules:
         - app.polychromatic.controller
         - com.valvesoftware.Steam
         - com.github.tchx84.Flatseal
+        - org.musicbrainz.Picard
         # - dev.edfloreshz.CosmicTweaks
       remove:
         - org.mozilla.firefox
@@ -97,7 +97,12 @@ modules:
 
   - type: script
     snippets:
-      - "sudo plymouth-set-default-theme catppuccin-mocha"
+    # Download and execute the official Calibre installer
+    - wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin install_dir=/opt isolated=y
+
+  - type: script
+    snippets:
+      - "plymouth-set-default-theme catppuccin-mocha"
 
   - type: initramfs
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
