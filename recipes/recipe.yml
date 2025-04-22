@@ -46,8 +46,6 @@ modules:
       - zathura-fish-completion
       - zathura-plugins-all
       - wqy-zenhei-fonts
-      - xone
-      - openrazer
     remove:
       - firefox
       - firefox-langpacks
