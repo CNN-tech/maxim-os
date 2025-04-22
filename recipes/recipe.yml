@@ -38,7 +38,6 @@ modules:
       - kitty
       - steam-devices # needed for flatpak too
       # - steam
-      - mesa-vdpau-drivers
       - mesa-vulkan-drivers
       - gamemode
       - gum
