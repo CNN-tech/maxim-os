@@ -76,6 +76,7 @@ modules:
   #   base: main # if not specified, classic "main" base is used by default
   #   install:
   #      - openrazer
+  #      - xone
 
   - type: systemd
     system:
