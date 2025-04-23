@@ -38,7 +38,6 @@ modules:
       - kitty
       - steam-devices # needed for flatpak too
       # - steam
-      - mesa-vulkan-drivers
       - gamemode
       - gum
       - zathura
@@ -76,8 +75,7 @@ modules:
   # - type: akmods
   #   base: main # if not specified, classic "main" base is used by default
   #   install:
-  #     - openrazer
-  #     - xone
+  #      - openrazer
 
   - type: systemd
     system:
