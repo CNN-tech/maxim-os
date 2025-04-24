@@ -55,6 +55,7 @@ modules:
         - com.discordapp.Discord
         - com.heroicgameslauncher.hgl
         - com.usebottles.bottles
+        - net.lutris.Lutris
         - com.vysp3r.ProtonPlus
         - org.keepassxc.KeePassXC
         - md.obsidian.Obsidian
